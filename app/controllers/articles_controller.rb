@@ -48,7 +48,9 @@ class ArticlesController < ApplicationController
   end
 
   private
-
+  def subfolderview
+    prepend_view_path Rails.root + 'app' + 'views/demo'
+  end
   def article_params
     params.require(:article).permit(:title,:body, :status)
   end
