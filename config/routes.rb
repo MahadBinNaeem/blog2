@@ -16,14 +16,14 @@ Rails.application.routes.draw do
     #get 'preview', on: :new
     resources :comments, as: "comments"
   end
-  resources :articles, concerns: :commentable, path_names: { new: 'make', edit: 'change' } do   #To override the new and edit segments
-    get 'preview', on: :member
+  #resources :articles, concerns: :commentable, path_names: { new: 'make', edit: 'change' } do   #To override the new and edit segments
+    #get 'preview', on: :member
     #resolve("Article") { [:article] }                                                    //singular URL /article instead of /articles
-  end
+  #end
   #direct :homepage do                                                                      //custom URL Helpers
   # "https://rubyonrails.org"
   #end
-    #resources :articles, concerns: :comm)entable
+  resources :articles, concerns: :commentable
   #resources :articles, concerns: :commentable,  path_names: { new: 'make', edit: 'change' } override the path segments
   #scope(path_names: { new: 'neu', edit: 'bearbeiten' }) do                                  #edit path names
    # resources :articles, path: 'aartical', concerns: :commentable
