@@ -1,0 +1,17 @@
+<h1>New Article</h1>
+<% content_for :special_script do %>
+  <script>alert('Adding a New Article!')</script>
+<% end %>
+ <%= yield :special_script %>
+<% cache do %>
+	<%= render partial: "form", locals: {article: @article} %>
+<% end %>
+1234567890.50=> <%= number_to_currency(1234567890.50) %> #convert the number to currency <br>
+1234.50=> <%= number_to_human(1234.50) %> #convert the number to amount <br>
+1234567.50=> <%= number_to_human(1234567.50) %> #convert the number to amount<br>
+1234.50=> <%= number_to_human_size(1234.50) %> #convert the number to memory_size <br>
+1234567.50=> <%= number_to_human_size(1234567.50) %> #convert the number to memory_size<br>
+ 
+<%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLMrH95cE6X1kbijNakEtqMHqo2c-TqydeLQUfnkfrfw&s' %> <br>Image Tag 
+<% sanitize @article.body, tags: %w(table tr td), attributes: %w(id class style) %> <br>
+strip_links('<a href="https://rubyonrails.org">Ruby on Rails</a>')

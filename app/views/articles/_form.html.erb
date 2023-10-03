@@ -1,0 +1,38 @@
+<%= form_with model: article do |form| %>
+  <% if form.object.errors.any? %>
+  <div>
+    <% form.object.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <%end%>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+   <div>
+    <%= form.check_box :pet_dog %>
+    <%= form.label :pet_dog, "I own a dog" %><br>
+    
+  </div>
+  <div>
+    <%= form.radio_button :age, "child" %>
+    <%= form.label :age_child, "I am younger than 21" %>
+    <%= form.radio_button :age, "adult" %>
+    <%= form.label :age_adult, "I am over 21" %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
