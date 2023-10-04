@@ -10,6 +10,7 @@
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
+    <%= form.text_field :title_confirmation %>
   </div>
 
   <div>
@@ -22,8 +23,8 @@
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
    <div>
-    <%= form.check_box :pet_dog %>
-    <%= form.label :pet_dog, "I own a dog" %><br>
+    <%= form.check_box :checkBox %>
+    <%= form.label :checkBox, "I own a dog" %><br>
     
   </div>
   <div>
