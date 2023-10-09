@@ -1,4 +1,3 @@
-
 Rails.application.routes.draw do
   #devise_for :users
   #get "/articles(/:id)", to: "articles#show"                                               //nonresourceful routing
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
     #get 'preview', on: :new
     resources :comments, as: "comments"
   end
+  
   #resources :articles, concerns: :commentable, path_names: { new: 'make', edit: 'change' } do   #To override the new and edit segments
     #get 'preview', on: :member
     #resolve("Article") { [:article] }                                                    //singular URL /article instead of /articles

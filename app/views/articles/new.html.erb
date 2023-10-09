@@ -4,8 +4,6 @@
 <% end %>
  <%= yield :special_script %>
 <% cache do %>
-
-
 	<%= render partial: "form", locals: {article: @article} %>
 <% end %>
 1234567890.50=> <%= number_to_currency(1234567890.50) %> #convert the number to currency <br>
