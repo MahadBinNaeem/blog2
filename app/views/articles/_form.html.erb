@@ -10,6 +10,7 @@
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
+    <%= form.text_field :title_confirmation %>
   </div>
 
   <div>
@@ -21,17 +22,19 @@
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
+
    <div>
-    <%= form.check_box :pet_dog %>
-    <%= form.label :pet_dog, "I own a dog" %><br>
-    
+    <%= form.check_box :checkBox %>
+    <%= form.label :checkBox, "I own a dog" %><br>  
   </div>
+
   <div>
     <%= form.radio_button :age, "child" %>
     <%= form.label :age_child, "I am younger than 21" %>
     <%= form.radio_button :age, "adult" %>
     <%= form.label :age_adult, "I am over 21" %>
   </div>
+
   <div>
     <%= form.submit %>
   </div>
