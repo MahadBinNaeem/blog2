@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   #direct :homepage do                                                                      //custom URL Helpers
   # "https://rubyonrails.org"
   #end
-  resources :articles, concerns: :commentable
+  resources :articles do
+    resources :comments
+  end
   #resources :articles, concerns: :commentable,  path_names: { new: 'make', edit: 'change' } override the path segments
   #scope(path_names: { new: 'neu', edit: 'bearbeiten' }) do                                  #edit path names
    # resources :articles, path: 'aartical', concerns: :commentable
