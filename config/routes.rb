@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   #devise_for :users
+  
   #get "/articles(/:id)", to: "articles#show"                                               //nonresourceful routing
   #get 'articles/:id/with_user/:user_id', to: 'articles#show'                               //static segment
   #get 'articles/:id/:user_id', to: 'articles#show'                                         //dynamic segment
@@ -9,8 +11,8 @@ Rails.application.routes.draw do
   #get '/articles(/:id)', to: "articles#show"                                               // Bound parameters
   #get '/articles/:id', to:  "articles#show", defaults: { id: 1 }                           //defining defaults
   #resources :articles, param: :identifier                                                   //renaming the resource identifier like :id to :identifier
+  root to: 'pages#index'
   get '/stories', to: redirect('/articles')                                                 #redirect one path to another path
-  root "articles#index"
   concern :commentable do                                                                   #concerns
     #get 'preview', on: :new
     resources :comments, as: "comments"
