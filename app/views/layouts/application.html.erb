@@ -32,6 +32,7 @@
           </ul>
           <ul class="nav navbar-nav pull-right">
             <% if user_signed_in? %>
+              <li><%= link_to 'Secret', secret_path %></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <%= current_user.name %>

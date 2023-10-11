@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   #get '/articles/:id', to:  "articles#show", defaults: { id: 1 }                           //defining defaults
   #resources :articles, param: :identifier                                                   //renaming the resource identifier like :id to :identifier
   root to: 'pages#index'
+  get '/secret', to: 'pages#secret', as: :secret
   get '/stories', to: redirect('/articles')                                                 #redirect one path to another path
   concern :commentable do                                                                   #concerns
     #get 'preview', on: :new
