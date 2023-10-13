@@ -2,15 +2,12 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
   
   def index
-    @articles = Article.all
-    respond_to do |format|
-      format.html
-      format.atom
-    end
+    @articles = Article.all.page(params[:page])
   end
 
   def preview
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
+    
   end
 
   def show

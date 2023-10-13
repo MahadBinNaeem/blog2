@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   include Visible
+  paginates_per 15
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true,uniqueness: true, on: :create#, confirmation: { message: "Enter Same" }, comparison: { equal_to: :title_confirmation}, fo7rmat: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
