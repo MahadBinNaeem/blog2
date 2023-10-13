@@ -6,11 +6,12 @@
     <% @articles.each do |article| %>
     <% unless article.archived? %>
       <li>
-          <%= link_to article.title, article %>
-        
+          <%= link_to article.title, article %> 
       </li>
-      <% end %>
     <% end %>
+  <% end %>
   </ul>
 <% end %>
+  <%= paginate @articles %>
   <%= link_to "New Article", new_article_path %>
+ 

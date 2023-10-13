@@ -1,15 +1,15 @@
 class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
+  
   def index
-    @articles = Article.all
-    respond_to do |format|
-      format.html
-      format.atom
-    end
+    @articles = Article.all.page(params[:page])
   end
+
   def preview
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
+    
   end
+
   def show
     @article = Article.find(params[:id])
   end
@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
+      flash[:error]="Could not save article"
       render :new, status: :unprocessable_entity
     end
   end
@@ -48,7 +49,11 @@ class ArticlesController < ApplicationController
   end
 
   private
-
+  
+  def subfolderview
+    prepend_view_path Rails.root + 'app' + 'views/demo'
+  end
+  
   def article_params
     params.require(:article).permit(:title,:body, :status)
   end

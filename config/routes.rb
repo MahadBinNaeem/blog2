@@ -1,6 +1,7 @@
-
 Rails.application.routes.draw do
+  devise_for :users
   #devise_for :users
+  
   #get "/articles(/:id)", to: "articles#show"                                               //nonresourceful routing
   #get 'articles/:id/with_user/:user_id', to: 'articles#show'                               //static segment
   #get 'articles/:id/:user_id', to: 'articles#show'                                         //dynamic segment
@@ -10,12 +11,14 @@ Rails.application.routes.draw do
   #get '/articles(/:id)', to: "articles#show"                                               // Bound parameters
   #get '/articles/:id', to:  "articles#show", defaults: { id: 1 }                           //defining defaults
   #resources :articles, param: :identifier                                                   //renaming the resource identifier like :id to :identifier
+  root to: 'pages#index'
+  get '/secret', to: 'pages#secret', as: :secret
   get '/stories', to: redirect('/articles')                                                 #redirect one path to another path
-  root "articles#index"
   concern :commentable do                                                                   #concerns
     #get 'preview', on: :new
     resources :comments, as: "comments"
   end
+  
   #resources :articles, concerns: :commentable, path_names: { new: 'make', edit: 'change' } do   #To override the new and edit segments
     #get 'preview', on: :member
     #resolve("Article") { [:article] }                                                    //singular URL /article instead of /articles
@@ -23,7 +26,9 @@ Rails.application.routes.draw do
   #direct :homepage do                                                                      //custom URL Helpers
   # "https://rubyonrails.org"
   #end
-  resources :articles, concerns: :commentable
+  resources :articles do
+    resources :comments
+  end
   #resources :articles, concerns: :commentable,  path_names: { new: 'make', edit: 'change' } override the path segments
   #scope(path_names: { new: 'neu', edit: 'bearbeiten' }) do                                  #edit path names
    # resources :articles, path: 'aartical', concerns: :commentable
